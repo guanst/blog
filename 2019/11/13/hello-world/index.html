@@ -51,30 +51,31 @@
   };
 </script>
 
-  <meta name="description" content="一个phper的进阶之路">
-<meta property="og:type" content="website">
-<meta property="og:title" content="墨痕诗香个人博客">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
+  <meta name="description" content="背景工作中最近在用到rpc及swoole框架 应用的是将一个大系统拆分成若干个小系统，若干个小系统和大系统之间采用rpc服务快速调用，借此机会进行rpc和swoole的学习什么是RPC通信百度百科给出来的解释是这样的：“RPC（Remote Procedure Call Protocol）——远程过程调用协议，它是一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络技术的协议”。我们常用的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈RPC通信以及swoole框架">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;13&#x2F;hello-world&#x2F;index.html">
 <meta property="og:site_name" content="墨痕诗香个人博客">
-<meta property="og:description" content="一个phper的进阶之路">
+<meta property="og:description" content="背景工作中最近在用到rpc及swoole框架 应用的是将一个大系统拆分成若干个小系统，若干个小系统和大系统之间采用rpc服务快速调用，借此机会进行rpc和swoole的学习什么是RPC通信百度百科给出来的解释是这样的：“RPC（Remote Procedure Call Protocol）——远程过程调用协议，它是一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络技术的协议”。我们常用的">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-13T14:32:40.307Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/">
+<link rel="canonical" href="http://yoursite.com/2019/11/13/hello-world/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
+    isHome: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>墨痕诗香个人博客</title>
+  <title>浅谈RPC通信以及swoole框架 | 墨痕诗香个人博客</title>
   
 
 
@@ -170,10 +171,10 @@
             
 
   <div class="posts-expand">
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/13/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -187,8 +188,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/13/hello-world/" class="post-title-link" itemprop="url">浅谈RPC通信以及swoole框架</a>
+          浅谈RPC通信以及swoole框架
         </h1>
 
         <div class="post-meta">
@@ -210,6 +210,13 @@
               <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -220,7 +227,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><h4 id="工作中最近在用到rpc及swoole框架-应用的是将一个大系统拆分成若干个小系统，若干个小系统和大系统之间采用rpc服务快速调用，借此机会进行rpc和swoole的学习"><a href="#工作中最近在用到rpc及swoole框架-应用的是将一个大系统拆分成若干个小系统，若干个小系统和大系统之间采用rpc服务快速调用，借此机会进行rpc和swoole的学习" class="headerlink" title="工作中最近在用到rpc及swoole框架 应用的是将一个大系统拆分成若干个小系统，若干个小系统和大系统之间采用rpc服务快速调用，借此机会进行rpc和swoole的学习"></a>工作中最近在用到rpc及swoole框架 应用的是将一个大系统拆分成若干个小系统，若干个小系统和大系统之间采用rpc服务快速调用，借此机会进行rpc和swoole的学习</h4><h3 id="什么是RPC通信"><a href="#什么是RPC通信" class="headerlink" title="什么是RPC通信"></a>什么是RPC通信</h3><p>百度百科给出来的解释是这样的：“RPC（Remote Procedure Call Protocol）——远程过程调用协议，它是一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络技术的协议”。<br>我们常用的进程间通信方式有两种，一种是<strong>RESTFULAPI</strong>，即常用的走HTTP请求调接口的方式，另一种便<strong>是RPC调用</strong></p>
+        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><h4 id="工作中最近在用到rpc及swoole框架-应用的是将一个大系统拆分成若干个小系统，若干个小系统和大系统之间采用rpc服务快速调用，借此机会进行rpc和swoole的学习"><a href="#工作中最近在用到rpc及swoole框架-应用的是将一个大系统拆分成若干个小系统，若干个小系统和大系统之间采用rpc服务快速调用，借此机会进行rpc和swoole的学习" class="headerlink" title="工作中最近在用到rpc及swoole框架 应用的是将一个大系统拆分成若干个小系统，若干个小系统和大系统之间采用rpc服务快速调用，借此机会进行rpc和swoole的学习"></a>工作中最近在用到rpc及swoole框架 应用的是将一个大系统拆分成若干个小系统，若干个小系统和大系统之间采用rpc服务快速调用，借此机会进行rpc和swoole的学习</h4><h3 id="什么是RPC通信"><a href="#什么是RPC通信" class="headerlink" title="什么是RPC通信"></a>什么是RPC通信</h3><p>百度百科给出来的解释是这样的：“RPC（Remote Procedure Call Protocol）——远程过程调用协议，它是一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络技术的协议”。<br>我们常用的进程间通信方式有两种，一种是<strong>RESTFULAPI</strong>，即常用的走HTTP请求调接口的方式，另一种便<strong>是RPC调用</strong></p>
 <h3 id="RPC和REST的区别"><a href="#RPC和REST的区别" class="headerlink" title="RPC和REST的区别"></a>RPC和REST的区别</h3><h5 id="1-所属类别不同"><a href="#1-所属类别不同" class="headerlink" title="1.所属类别不同"></a>1.所属类别不同</h5><p>REST，是Representational State Transfer 的简写，中文描述表述性状态传递（是指某个瞬间状态的资源数据的快照，包括资源数据的内容、表述格式(XML、JSON)等信息。）</p>
 <p>REST 是一种软件架构风格。这种风格的典型应用，就是HTTP。其因为简单、扩展性强的特点而广受开发者的青睐。</p>
 <p>而RPC 呢，是 Remote Procedure Call Protocol 的简写，中文描述是远程过程调用，它可以实现客户端像调用本地服务(方法)一样调用服务器的服务(方法)。</p>
@@ -238,24 +245,24 @@
 <h4 id="swoole的rpc和常用的HTTP请求有何不同"><a href="#swoole的rpc和常用的HTTP请求有何不同" class="headerlink" title="swoole的rpc和常用的HTTP请求有何不同"></a>swoole的rpc和常用的HTTP请求有何不同</h4><h5 id="以下节选自官方文档"><a href="#以下节选自官方文档" class="headerlink" title="以下节选自官方文档"></a>以下节选自官方文档</h5><p>很多企业使用Http Rest实现RPC通信，实现简单可以利用到很多现成的工具和方案。但是Http通信协议存在2个严重的缺陷。<br>Http不支持单连接并发，如果要同时并发很多请求，必须创建大量TCP连接。如果php-fpm开启500个进程，每次需要128个并发，那么就需要创建64000个TCP连接。<br>Http对长连接支持不够好，很多Http程序都是设计为短连接的，在请求时创建TCP连接、请求结束时close，这会带来额外的网络通信消耗<br>Swoole框架的RPC客户端使用16字节固定包头+包体的通信方式，支持单连接并发、支持在php-fpm开启长连接。</p>
 <p>通俗来讲，就是使用swoole的rpc后 性能会提升 并且比http请求更加稳定可靠</p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+
+        
+
       </footer>
+    
   </article>
   
   
   
 
   </div>
-
-  
-
 
 
           </div>
@@ -284,6 +291,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#工作中最近在用到rpc及swoole框架-应用的是将一个大系统拆分成若干个小系统，若干个小系统和大系统之间采用rpc服务快速调用，借此机会进行rpc和swoole的学习"><span class="nav-number">1.1.</span> <span class="nav-text">工作中最近在用到rpc及swoole框架 应用的是将一个大系统拆分成若干个小系统，若干个小系统和大系统之间采用rpc服务快速调用，借此机会进行rpc和swoole的学习</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是RPC通信"><span class="nav-number">2.</span> <span class="nav-text">什么是RPC通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RPC和REST的区别"><span class="nav-number">3.</span> <span class="nav-text">RPC和REST的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-所属类别不同"><span class="nav-number">3.0.1.</span> <span class="nav-text">1.所属类别不同</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-使用方式不同"><span class="nav-number">3.0.2.</span> <span class="nav-text">2.使用方式不同</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-面向对象不同"><span class="nav-number">3.0.3.</span> <span class="nav-text">3.面向对象不同</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-序列化协议不同"><span class="nav-number">3.0.4.</span> <span class="nav-text">4.序列化协议不同</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是swoole框架"><span class="nav-number">4.</span> <span class="nav-text">什么是swoole框架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#swoole的rpc和常用的HTTP请求有何不同"><span class="nav-number">4.1.</span> <span class="nav-text">swoole的rpc和常用的HTTP请求有何不同</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#以下节选自官方文档"><span class="nav-number">4.1.1.</span> <span class="nav-text">以下节选自官方文档</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
